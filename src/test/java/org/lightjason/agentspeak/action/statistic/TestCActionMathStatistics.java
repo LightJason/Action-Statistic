@@ -21,7 +21,7 @@
  * @endcond
  */
 
-package org.lightjason.agentspeak.action;
+package org.lightjason.agentspeak.action.statistic;
 
 import org.apache.commons.math3.distribution.BetaDistribution;
 import org.apache.commons.math3.distribution.CauchyDistribution;
@@ -46,18 +46,6 @@ import org.apache.commons.math3.stat.descriptive.SummaryStatistics;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
-import org.lightjason.agentspeak.action.statistic.CAddStatisticValue;
-import org.lightjason.agentspeak.action.statistic.CClearStatistic;
-import org.lightjason.agentspeak.action.statistic.CCreateDistribution;
-import org.lightjason.agentspeak.action.statistic.CCreateStatistic;
-import org.lightjason.agentspeak.action.statistic.CExponentialSelection;
-import org.lightjason.agentspeak.action.statistic.CLinearSelection;
-import org.lightjason.agentspeak.action.statistic.CMultiplePercentile;
-import org.lightjason.agentspeak.action.statistic.CMultipleStatisticValue;
-import org.lightjason.agentspeak.action.statistic.CRandomSample;
-import org.lightjason.agentspeak.action.statistic.CRandomSimple;
-import org.lightjason.agentspeak.action.statistic.CSinglePercentile;
-import org.lightjason.agentspeak.action.statistic.CSingleStatisticValue;
 import org.lightjason.agentspeak.language.CRawTerm;
 import org.lightjason.agentspeak.language.ITerm;
 import org.lightjason.agentspeak.language.execution.IContext;
