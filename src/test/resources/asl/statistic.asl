@@ -24,7 +24,7 @@
 // -----
 // agent for testing statistic
 // @iteration 2
-// @testcount 1
+// @testcount 2
 // -----
 
 // initial-goal
@@ -34,17 +34,37 @@
  * base test
  */
 +!test <-
-    !testrandomsample
+    !testbase;
+    !teststatistic
 .
 
 
 /**
  * test max/min index
  */
-+!testindex <-
++!testbase <-
     Distribution = .math/statistic/createdistribution( "normal", 20, 100 );
     RV = .math/statistic/randomsample( Distribution, 8 );
 
     .test/print("random", RV);
     .test/result( success )
+.
+
+
+/**
+ * test statistic
+ */
++!teststatistic <-
+        Statistic = .math/statistic/createstatistic;
+        Distribution = .math/statistic/createdistribution( "normal", 20, 100 );
+
+        RV = .math/statistic/randomsample( Distribution, 8 );
+        L = .test/list/range(1, 20);
+        .math/statistic/addstatisticvalue(Statistic, RV, L);
+
+        [SMax|SMin|SCount|SPopVariance|SQuadraticMean|SSecondMom|SStd|SSum|SSumSq|SVar|SMean] = .math/statistic/multiplestatisticvalue(Statistic, "max", "min", "count", "populationvariance", "quadraticmean", "secondmoment", "standarddeviation", "sum", "sumsquare", "variance", "mean" );
+        SX = .math/statistic/singlestatisticvalue("mean", Statistic);
+
+        .test/print("statistic", SMax, SMin, SCount, SPopVariance, SQuadraticMean, SSecondMom, SStd, SSum, SSumSq, SVar, SMean );
+        .test/result( success )
 .
