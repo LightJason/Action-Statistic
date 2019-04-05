@@ -34,7 +34,7 @@ import org.lightjason.agentspeak.language.fuzzy.IFuzzyValue;
 import javax.annotation.Nonnegative;
 import javax.annotation.Nonnull;
 import java.util.List;
-import java.util.Random;
+import java.util.concurrent.ThreadLocalRandom;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -49,10 +49,6 @@ public abstract class IBaseSelection extends IBaseAction
      * serial id
      */
     private static final long serialVersionUID = -365949510289020495L;
-    /**
-     * random instance
-     */
-    private final Random m_random = new Random();
 
     @Nonnegative
     @Override
@@ -65,28 +61,35 @@ public abstract class IBaseSelection extends IBaseAction
     @Override
     @SuppressWarnings( "unchecked" )
     public final Stream<IFuzzyValue<?>> execute( final boolean p_parallel, @Nonnull final IContext p_context,
-                                                 @Nonnull final List<ITerm> p_argument, @Nonnull final List<ITerm> p_return
-    )
+                                                 @Nonnull final List<ITerm> p_argument, @Nonnull final List<ITerm> p_return )
     {
-        // first parameter is a list with elements, which will return by the selection
-        // second parameter is a numeric value for each element
-        final List<Object> l_items = p_argument.get( 0 ).<List<Object>>raw().stream().map( i -> i instanceof ITerm ? CCommon.replacebycontext( p_context, (ITerm) i )
-                                                                                                                   .raw() : i ).collect( Collectors.toList() );
+        // first and second parameter are lists with values or variables, other values are possible passing arguments
+        final List<Object> l_items = p_argument.get( 0 )
+                                               .<List<Object>>raw()
+                                               .stream()
+                                               .map( i -> IBaseSelection.type( p_context, i ) )
+                                               .collect( Collectors.toList() );
+
         final List<Double> l_weight = this.weight(
             l_items,
-            p_argument.get( 1 ).<List<?>>raw().stream()
-                                              // list can be contains default Java objects or term objects
-                                              .map( i -> i instanceof ITerm ? CCommon.replacebycontext( p_context, (ITerm) i ).raw() : (Number) i )
-                                              .map( Number::doubleValue )
-                                              .map( Math::abs ),
+
+            p_argument.get( 1 )
+                      .<List<Object>>raw()
+                      .stream()
+                      .map( i -> IBaseSelection.<Number>type( p_context, i ) )
+                      .map( Number::doubleValue )
+                      .map( Math::abs ),
+
             p_argument.subList( 2, p_argument.size() )
         );
 
         if ( l_items.isEmpty() || l_items.size() != l_weight.size() )
-            throw new CExecutionIllegealArgumentException( p_context, org.lightjason.agentspeak.common.CCommon.languagestring( IBaseSelection.class, "novaluepresent" ) );
+            throw new CExecutionIllegealArgumentException(
+                p_context, org.lightjason.agentspeak.common.CCommon.languagestring( IBaseSelection.class, "novaluepresent" )
+            );
 
-        // select a random value and scale with the sum
-        double l_random = m_random.nextDouble() * l_weight.stream().mapToDouble( i -> i ).sum();
+        // select a random value and scale with the sum and caluclate result item
+        double l_random = ThreadLocalRandom.current().nextDouble() * l_weight.stream().mapToDouble( i -> i ).sum();
         for ( int i = 0; i < l_weight.size(); i++ )
         {
             l_random -= l_weight.get( i );
@@ -100,6 +103,22 @@ public abstract class IBaseSelection extends IBaseAction
         // on rounding error return last element
         p_return.add( CRawTerm.of( l_items.get( l_items.size() - 1 ) ) );
         return Stream.of();
+    }
+
+    /**
+     * type converting
+     *
+     * @param p_context context
+     * @param p_data data input
+     * @tparam T return type
+     * @return return value
+     */
+    @SuppressWarnings( "unchecked" )
+    private static <T> T type( @Nonnull final IContext p_context, @Nonnull final Object p_data )
+    {
+        return p_data instanceof ITerm
+               ?  CCommon.replacebycontext( p_context, (ITerm) p_data ).raw()
+               : (T) p_data;
     }
 
     /**
