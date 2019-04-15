@@ -86,7 +86,7 @@ public final class CCreateStatistic extends IBaseAction
         ).map( i -> i.apply( p_parallel ) )
          .map( CRawTerm::of ).forEach( p_return::add );
 
-        return Stream.of();
+        return Stream.empty();
     }
 
 

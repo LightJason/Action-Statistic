@@ -96,13 +96,13 @@ public abstract class IBaseSelection extends IBaseAction
             if ( l_random <= 0 )
             {
                 p_return.add( CRawTerm.of( l_items.get( i ) ) );
-                return Stream.of();
+                return Stream.empty();
             }
         }
 
         // on rounding error return last element
         p_return.add( CRawTerm.of( l_items.get( l_items.size() - 1 ) ) );
-        return Stream.of();
+        return Stream.empty();
     }
 
     /**

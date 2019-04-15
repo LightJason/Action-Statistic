@@ -87,7 +87,7 @@ public final class CSinglePercentile extends IBaseAction
                    .mapToObj( CRawTerm::of )
                    .forEach( p_return::add );
 
-        return Stream.of();
+        return Stream.empty();
     }
 
 }

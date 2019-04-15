@@ -111,7 +111,7 @@ public final class CAddStatisticValue extends IBaseAction
                 org.lightjason.agentspeak.common.CCommon.languagestring( this, "argumenterror" )
             );
 
-        return Stream.of();
+        return Stream.empty();
     }
 
 }

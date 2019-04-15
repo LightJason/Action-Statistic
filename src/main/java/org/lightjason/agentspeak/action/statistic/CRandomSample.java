@@ -94,7 +94,7 @@ public final class CRandomSample extends IBaseAction
             .mapToObj( i -> CRandomSample.samples( l_arguments.get( 0 ).<AbstractRealDistribution>raw(), i, p_parallel ) )
             .forEach( p_return::add );
 
-        return Stream.of();
+        return Stream.empty();
     }
 
     /**

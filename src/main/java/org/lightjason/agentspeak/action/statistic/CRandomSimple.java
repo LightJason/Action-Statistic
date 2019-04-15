@@ -85,7 +85,7 @@ public final class CRandomSimple extends IBaseAction
                             : IntStream.range( 0, i ).mapToDouble( j -> Math.random() ).boxed().collect( Collectors.toList() )
         ).map( CRawTerm::of ).forEach( p_return::add );
 
-        return Stream.of();
+        return Stream.empty();
     }
 
 }
