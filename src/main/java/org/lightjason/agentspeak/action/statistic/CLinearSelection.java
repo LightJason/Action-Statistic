@@ -41,7 +41,7 @@ import java.util.stream.Stream;
  *
  * {@code S = .math/statistic/linearselection( ["a","b","c","d"], [0.5, 0.7, 0.9, 3] );}
  *
- * @see https://en.wikipedia.org/wiki/Fitness_proportionate_selection
+ * @see <a href="https://en.wikipedia.org/wiki/Fitness_proportionate_selection"></a>
  */
 public final class CLinearSelection extends IBaseSelection
 {

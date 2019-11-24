@@ -53,7 +53,7 @@ import java.util.stream.Stream;
  *
  * {@code [S1|S2] = .math/statistic/createstaistic("summary", ["descriptive"]);}
  *
- * @see http://commons.apache.org/proper/commons-math/userguide/stat.html
+ * @see <a href="http://commons.apache.org/proper/commons-math/userguide/stat.html"></a>
  */
 public final class CCreateStatistic extends IBaseAction
 {

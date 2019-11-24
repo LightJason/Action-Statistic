@@ -125,23 +125,23 @@ import java.util.stream.Stream;
  *
  * {@code [D1|D2] = .math/statistic/createdistribution( "normal", 20, 10, ["beta", "isaac", [8, 12]] );}
  *
- * @see https://en.wikipedia.org/wiki/Beta_distribution
- * @see https://en.wikipedia.org/wiki/Cauchy_distribution
- * @see https://en.wikipedia.org/wiki/Chi-squared_distribution
- * @see https://en.wikipedia.org/wiki/Exponential_distribution
- * @see https://en.wikipedia.org/wiki/F-distribution
- * @see https://en.wikipedia.org/wiki/Gamma_distribution
- * @see https://en.wikipedia.org/wiki/Gumbel_distribution
- * @see https://en.wikipedia.org/wiki/L%C3%A9vy_distribution
- * @see https://en.wikipedia.org/wiki/Logistic_distribution
- * @see https://en.wikipedia.org/wiki/Log-normal_distribution
- * @see https://en.wikipedia.org/wiki/Nakagami_distribution
- * @see https://en.wikipedia.org/wiki/Normal_distribution
- * @see https://en.wikipedia.org/wiki/Pareto_distribution
- * @see https://en.wikipedia.org/wiki/Student%27s_t-distribution
- * @see https://en.wikipedia.org/wiki/Triangular_distribution
- * @see https://en.wikipedia.org/wiki/Uniform_distribution_(continuous)
- * @see https://en.wikipedia.org/wiki/Weibull_distribution
+ * @see <a href="https://en.wikipedia.org/wiki/Beta_distribution"></a>
+ * @see <a href="https://en.wikipedia.org/wiki/Cauchy_distribution"></a>
+ * @see <a href="https://en.wikipedia.org/wiki/Chi-squared_distribution"></a>
+ * @see <a href="https://en.wikipedia.org/wiki/Exponential_distribution"></a>
+ * @see <a href="https://en.wikipedia.org/wiki/F-distribution"></a>
+ * @see <a href="https://en.wikipedia.org/wiki/Gamma_distribution"></a>
+ * @see <a href="https://en.wikipedia.org/wiki/Gumbel_distribution"></a>
+ * @see <a href="https://en.wikipedia.org/wiki/L%C3%A9vy_distribution"></a>
+ * @see <a href="https://en.wikipedia.org/wiki/Logistic_distribution"></a>
+ * @see <a href="https://en.wikipedia.org/wiki/Log-normal_distribution"></a>
+ * @see <a href="https://en.wikipedia.org/wiki/Nakagami_distribution"></a>
+ * @see <a href="https://en.wikipedia.org/wiki/Normal_distribution"></a>
+ * @see <a href="https://en.wikipedia.org/wiki/Pareto_distribution"></a>
+ * @see <a href="https://en.wikipedia.org/wiki/Student%27s_t-distribution"></a>
+ * @see <a href="https://en.wikipedia.org/wiki/Triangular_distribution"></a>
+ * @see <a href="https://en.wikipedia.org/wiki/Uniform_distribution_(continuous)"></a>
+ * @see <a href="https://en.wikipedia.org/wiki/Weibull_distribution"></a>
  */
 public final class CCreateDistribution extends IBaseAction
 {

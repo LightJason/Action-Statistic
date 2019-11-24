@@ -40,8 +40,8 @@ import java.util.stream.Stream;
  *
  * {@code S = .math/statistic/exponentialselection( ["a","b","c","d"], [0.5, 0.7, 0.9, 3], RationalFactor );}
  *
- * @see https://en.wikipedia.org/wiki/Boltzmann_distribution
- * @see https://en.wikipedia.org/wiki/Log-linear_model
+ * @see <a href="https://en.wikipedia.org/wiki/Boltzmann_distribution"></a>
+ * @see <a href="https://en.wikipedia.org/wiki/Log-linear_model"></a>
  */
 public final class CExponentialSelection extends IBaseSelection
 {
