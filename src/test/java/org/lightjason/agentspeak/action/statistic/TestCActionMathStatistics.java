@@ -43,9 +43,9 @@ import org.apache.commons.math3.distribution.UniformRealDistribution;
 import org.apache.commons.math3.distribution.WeibullDistribution;
 import org.apache.commons.math3.stat.descriptive.DescriptiveStatistics;
 import org.apache.commons.math3.stat.descriptive.SummaryStatistics;
-import org.junit.Assert;
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 import org.lightjason.agentspeak.language.CRawTerm;
 import org.lightjason.agentspeak.language.ITerm;
 import org.lightjason.agentspeak.language.execution.IContext;
@@ -77,7 +77,7 @@ public final class TestCActionMathStatistics extends IBaseTest
     /**
      * initialize
      */
-    @Before
+    @BeforeEach
     public void initialize()
     {
         m_summarystatistic = new SummaryStatistics();
@@ -110,11 +110,11 @@ public final class TestCActionMathStatistics extends IBaseTest
             l_return
         );
 
-        Assert.assertEquals( 4, l_return.size() );
-        Assert.assertTrue( l_return.get( 0 ).raw() instanceof SummaryStatistics );
-        Assert.assertTrue( l_return.get( 1 ).raw() instanceof DescriptiveStatistics );
-        Assert.assertTrue( l_return.get( 2 ).raw() instanceof SummaryStatistics );
-        Assert.assertTrue( l_return.get( 3 ).raw() instanceof DescriptiveStatistics );
+        Assertions.assertEquals( 4, l_return.size() );
+        Assertions.assertTrue( l_return.get( 0 ).raw() instanceof SummaryStatistics );
+        Assertions.assertTrue( l_return.get( 1 ).raw() instanceof DescriptiveStatistics );
+        Assertions.assertTrue( l_return.get( 2 ).raw() instanceof SummaryStatistics );
+        Assertions.assertTrue( l_return.get( 3 ).raw() instanceof DescriptiveStatistics );
     }
 
     /**
@@ -143,8 +143,8 @@ public final class TestCActionMathStatistics extends IBaseTest
         );
 
 
-        Assert.assertEquals( 4, l_return.size() );
-        Assert.assertArrayEquals(
+        Assertions.assertEquals( 4, l_return.size() );
+        Assertions.assertArrayEquals(
             Stream.of( 49.5, 495, 24.25, 74.75 ).mapToDouble( Number::doubleValue ).boxed().toArray(),
             l_return.stream().map( i -> i.<Number>raw().doubleValue() ).toArray()
         );
@@ -162,8 +162,8 @@ public final class TestCActionMathStatistics extends IBaseTest
             Collections.emptyList()
         );
 
-        Assert.assertEquals( 0, m_summarystatistic.getSum(), 0 );
-        Assert.assertEquals( 0, m_descriptivestatistic.getSum(), 0 );
+        Assertions.assertEquals( 0, m_summarystatistic.getSum(), 0 );
+        Assertions.assertEquals( 0, m_descriptivestatistic.getSum(), 0 );
     }
 
     /**
@@ -199,25 +199,25 @@ public final class TestCActionMathStatistics extends IBaseTest
             l_return
         );
 
-        Assert.assertEquals( 18, l_return.size() );
-        Assert.assertTrue( l_return.get( 0 ).raw() instanceof NormalDistribution );
-        Assert.assertTrue( l_return.get( 1 ).raw() instanceof BetaDistribution );
-        Assert.assertTrue( l_return.get( 2 ).raw() instanceof CauchyDistribution );
-        Assert.assertTrue( l_return.get( 3 ).raw() instanceof ChiSquaredDistribution );
-        Assert.assertTrue( l_return.get( 4 ).raw() instanceof ExponentialDistribution );
-        Assert.assertTrue( l_return.get( 5 ).raw() instanceof FDistribution );
-        Assert.assertTrue( l_return.get( 6 ).raw() instanceof GammaDistribution );
-        Assert.assertTrue( l_return.get( 7 ).raw() instanceof GumbelDistribution );
-        Assert.assertTrue( l_return.get( 8 ).raw() instanceof LaplaceDistribution );
-        Assert.assertTrue( l_return.get( 9 ).raw() instanceof LevyDistribution );
-        Assert.assertTrue( l_return.get( 10 ).raw() instanceof LogisticDistribution );
-        Assert.assertTrue( l_return.get( 11 ).raw() instanceof LogNormalDistribution );
-        Assert.assertTrue( l_return.get( 12 ).raw() instanceof NakagamiDistribution );
-        Assert.assertTrue( l_return.get( 13 ).raw() instanceof ParetoDistribution );
-        Assert.assertTrue( l_return.get( 14 ).raw() instanceof TDistribution );
-        Assert.assertTrue( l_return.get( 15 ).raw() instanceof TriangularDistribution );
-        Assert.assertTrue( l_return.get( 16 ).raw() instanceof UniformRealDistribution );
-        Assert.assertTrue( l_return.get( 17 ).raw() instanceof WeibullDistribution );
+        Assertions.assertEquals( 18, l_return.size() );
+        Assertions.assertTrue( l_return.get( 0 ).raw() instanceof NormalDistribution );
+        Assertions.assertTrue( l_return.get( 1 ).raw() instanceof BetaDistribution );
+        Assertions.assertTrue( l_return.get( 2 ).raw() instanceof CauchyDistribution );
+        Assertions.assertTrue( l_return.get( 3 ).raw() instanceof ChiSquaredDistribution );
+        Assertions.assertTrue( l_return.get( 4 ).raw() instanceof ExponentialDistribution );
+        Assertions.assertTrue( l_return.get( 5 ).raw() instanceof FDistribution );
+        Assertions.assertTrue( l_return.get( 6 ).raw() instanceof GammaDistribution );
+        Assertions.assertTrue( l_return.get( 7 ).raw() instanceof GumbelDistribution );
+        Assertions.assertTrue( l_return.get( 8 ).raw() instanceof LaplaceDistribution );
+        Assertions.assertTrue( l_return.get( 9 ).raw() instanceof LevyDistribution );
+        Assertions.assertTrue( l_return.get( 10 ).raw() instanceof LogisticDistribution );
+        Assertions.assertTrue( l_return.get( 11 ).raw() instanceof LogNormalDistribution );
+        Assertions.assertTrue( l_return.get( 12 ).raw() instanceof NakagamiDistribution );
+        Assertions.assertTrue( l_return.get( 13 ).raw() instanceof ParetoDistribution );
+        Assertions.assertTrue( l_return.get( 14 ).raw() instanceof TDistribution );
+        Assertions.assertTrue( l_return.get( 15 ).raw() instanceof TriangularDistribution );
+        Assertions.assertTrue( l_return.get( 16 ).raw() instanceof UniformRealDistribution );
+        Assertions.assertTrue( l_return.get( 17 ).raw() instanceof WeibullDistribution );
     }
 
     /**
@@ -232,8 +232,8 @@ public final class TestCActionMathStatistics extends IBaseTest
             Collections.emptyList()
         );
 
-        Assert.assertEquals( 6, m_descriptivestatistic.getN(), 0 );
-        Assert.assertEquals( 6, m_summarystatistic.getN() );
+        Assertions.assertEquals( 6, m_descriptivestatistic.getN(), 0 );
+        Assertions.assertEquals( 6, m_summarystatistic.getN() );
     }
 
     /**
@@ -257,8 +257,8 @@ public final class TestCActionMathStatistics extends IBaseTest
             l_return
         );
 
-        Assert.assertEquals( 10, l_return.size() );
-        Assert.assertArrayEquals(
+        Assertions.assertEquals( 10, l_return.size() );
+        Assertions.assertArrayEquals(
             Stream.of(
                 m_summarystatistic.getVariance(), m_summarystatistic.getMean(),
                 m_summarystatistic.getMax(), m_summarystatistic.getGeometricMean(),
@@ -292,8 +292,8 @@ public final class TestCActionMathStatistics extends IBaseTest
             l_return
         );
 
-        Assert.assertEquals( l_return.size(), 11 );
-        Assert.assertArrayEquals(
+        Assertions.assertEquals( l_return.size(), 11 );
+        Assertions.assertArrayEquals(
                 Stream.of(
                         m_descriptivestatistic.getVariance(), m_descriptivestatistic.getMean(),
                         m_descriptivestatistic.getMax(), m_descriptivestatistic.getGeometricMean(),
@@ -320,9 +320,9 @@ public final class TestCActionMathStatistics extends IBaseTest
             l_return
         );
 
-        Assert.assertEquals( 1, l_return.size() );
-        Assert.assertTrue( l_return.get( 0 ).raw() instanceof List );
-        Assert.assertEquals( 3, l_return.get( 0 ).<List<Number>>raw().size() );
+        Assertions.assertEquals( 1, l_return.size() );
+        Assertions.assertTrue( l_return.get( 0 ).raw() instanceof List );
+        Assertions.assertEquals( 3, l_return.get( 0 ).<List<Number>>raw().size() );
     }
 
     /**
@@ -339,9 +339,9 @@ public final class TestCActionMathStatistics extends IBaseTest
             l_return
         );
 
-        Assert.assertEquals( 1, l_return.size() );
-        Assert.assertTrue( l_return.get( 0 ).raw() instanceof List );
-        Assert.assertEquals( 5, l_return.get( 0 ).<List<Number>>raw().size() );
+        Assertions.assertEquals( 1, l_return.size() );
+        Assertions.assertTrue( l_return.get( 0 ).raw() instanceof List );
+        Assertions.assertEquals( 5, l_return.get( 0 ).<List<Number>>raw().size() );
     }
 
     /**
@@ -358,9 +358,9 @@ public final class TestCActionMathStatistics extends IBaseTest
             l_return
         );
 
-        Assert.assertEquals( 2, l_return.size() );
-        Assert.assertEquals( m_summarystatistic.getMin(), l_return.get( 0 ).<Double>raw(), 0 );
-        Assert.assertEquals( m_descriptivestatistic.getMin(), l_return.get( 1 ).<Double>raw(), 0 );
+        Assertions.assertEquals( 2, l_return.size() );
+        Assertions.assertEquals( m_summarystatistic.getMin(), l_return.get( 0 ).<Double>raw(), 0 );
+        Assertions.assertEquals( m_descriptivestatistic.getMin(), l_return.get( 1 ).<Double>raw(), 0 );
     }
 
     /**
@@ -382,13 +382,13 @@ public final class TestCActionMathStatistics extends IBaseTest
                         ) );
 
 
-        Assert.assertEquals(
+        Assertions.assertEquals(
             0.73,
             (double) Collections.frequency( l_return.stream().map( ITerm::raw ).collect( Collectors.toList() ), "a" ) / l_return.size(),
             0.05
         );
 
-        Assert.assertEquals(
+        Assertions.assertEquals(
             0.27,
             (double) Collections.frequency( l_return.stream().map( ITerm::raw ).collect( Collectors.toList() ), "b" ) / l_return.size(),
             0.05
@@ -415,13 +415,13 @@ public final class TestCActionMathStatistics extends IBaseTest
                                ) );
 
 
-        Assert.assertEquals(
+        Assertions.assertEquals(
             0.73,
             (double) Collections.frequency( l_return.stream().map( ITerm::raw ).collect( Collectors.toList() ), "a" ) / l_return.size(),
             0.2
         );
 
-        Assert.assertEquals(
+        Assertions.assertEquals(
             0.27,
             (double) Collections.frequency( l_return.stream().map( ITerm::raw ).collect( Collectors.toList() ), "b" ) / l_return.size(),
             0.2
@@ -446,13 +446,13 @@ public final class TestCActionMathStatistics extends IBaseTest
                             l_return
         ) );
 
-        Assert.assertEquals(
+        Assertions.assertEquals(
             0.3,
             (double) Collections.frequency( l_return.stream().map( ITerm::raw ).collect( Collectors.toList() ), "c" ) / l_return.size(),
             0.05
         );
 
-        Assert.assertEquals(
+        Assertions.assertEquals(
             0.7,
             (double) Collections.frequency( l_return.stream().map( ITerm::raw ).collect( Collectors.toList() ), "d" ) / l_return.size(),
             0.05
